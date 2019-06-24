@@ -8,7 +8,7 @@ function render() {
   return m('div', [
     m('h1', 'Hello World !!'),
     m('div',
-         m(People),
+      m(People),
     ),
   ]);
 }
