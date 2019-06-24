@@ -24,12 +24,10 @@ Films.view = () => {
     );
 
     return m('div', [
-        m('hr'),
         m('h1', 'Films: '),
         m('div.list-group',
             Films.state.films.length === 0 ? loader : filmsList
         ),
-        m('hr'),
     ]);
 };
 

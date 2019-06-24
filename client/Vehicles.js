@@ -18,12 +18,10 @@ Vehicles.view = () => {
     ));
 
     return m('div', [
-        m('hr'),
         m('h1', 'Vehicles: '),
         m('div',
             Vehicles.state.vehicles.length === 0 ? 'Loading ...' : vehiclesList
         ),
-        m('hr'),
     ]);
 };
 

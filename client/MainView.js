@@ -13,13 +13,13 @@ function render() {
     m('div.container',
       m('div.row',
         [
-          m('div.col-md-2',
+          m('div.col-md-2.border',
              m(People),
           ),
-          m('div.col-md-2',
+          m('div.col-md-2.border',
              m(Films),
           ),
-          m('div.col-md-2',
+          m('div.col-md-2.border',
              m(Vehicles),
           ),
         ]
