@@ -6,6 +6,7 @@ const People = require('./People');
 const Planets = require('./Planets');
 const Films = require('./Films');
 const Vehicles = require('./Vehicles');
+const Species = require('./Species');
 
 function render() {
   return m('div', [
@@ -21,6 +22,9 @@ function render() {
           ),
           m('div.col-md-2.border',
              m(Vehicles),
+          ),
+          m('div.col-md-2.border',
+             m(Species),
           ),
         ]
       )
