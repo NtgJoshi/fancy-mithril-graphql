@@ -1,4 +1,6 @@
 const m = require('mithril');
+const Loader = require('./common/Loader');
+const Carousel = require('./common/Carousel');
 
 const Vehicles = {};
 
@@ -7,20 +9,19 @@ Vehicles.state = {
 };
 
 Vehicles.view = () => {
-
-    const vehiclesList = Vehicles.state.vehicles.map(film => (
-        m('div',
-            [
-                m('p', [ 'Name: ', film.name ]),
-                m('p', [ 'Model: ', film.model ]),
-            ]
-        )
-    ));
-
     return m('div', [
-        m('h1', 'Vehicles: '),
+        m('h1', 'Vehicles'),
         m('div',
-            Vehicles.state.vehicles.length === 0 ? 'Loading ...' : vehiclesList
+            Vehicles.state.vehicles.length === 0 ?
+                m(Loader):
+                m(Carousel, {
+                    id: 'vehicles',
+                    items: Vehicles.state.vehicles.map(vehicle => (
+                        {
+                            label: vehicle.name
+                        }
+                    ))
+                })
         ),
     ]);
 };

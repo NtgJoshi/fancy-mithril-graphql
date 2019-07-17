@@ -1,4 +1,6 @@
 const m = require('mithril');
+const Loader = require('./common/Loader');
+const Carousel = require('./common/Carousel');
 
 const Films = {};
 
@@ -7,26 +9,19 @@ Films.state = {
 };
 
 Films.view = () => {
-
-    const filmsList = Films.state.films.map(film => (
-        m('div.list-group-item',
-            [
-                m('p', [ 'Title: ', film.title ]),
-                m('p', [ 'Episode: ', film.episode_id ]),
-            ]
-        )
-    ));
-
-    const loader = m(".spinner-border.text-primary[role='status']",
-        m("span.sr-only",
-            "Loading..."
-        )
-    );
-
     return m('div', [
-        m('h1', 'Films: '),
-        m('div.list-group',
-            Films.state.films.length === 0 ? loader : filmsList
+        m('h1', 'Films'),
+        m('div',
+            Films.state.films.length === 0 ?
+                m(Loader):
+                m(Carousel, {
+                    id: 'films',
+                    items: Films.state.films.map(film => (
+                        {
+                            label: film.title
+                        }
+                    ))
+                })
         ),
     ]);
 };

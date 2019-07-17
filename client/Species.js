@@ -1,4 +1,6 @@
 const m = require('mithril');
+const Loader = require('./common/Loader');
+const Carousel = require('./common/Carousel');
 
 const Species = {};
 const SWAPI_SERVER_URL = 'https://swapi.co/api';
@@ -20,17 +22,20 @@ Species.oninit = () => {
 };
 
 Species.view = () => {
-    const loader = m(".spinner-border.text-primary[role='status']",
-        m("span.sr-only",
-            "Loading..."
-        )
-    );
     return (
         m('div', [
-            m('h1', 'Species:'),
+            m('h1', 'Species'),
             m('div', [
-                Species.state.species.length === 0 ? loader :
-                    Species.state.species.map(specie => m('p', specie.name))
+                Species.state.species.length === 0 ?
+                    m(Loader):
+                    m(Carousel, {
+                        id: 'species',
+                        items: Species.state.species.map(specie => (
+                            {
+                                label: specie.name
+                            }
+                        ))
+                    })
             ]),
         ])
     )

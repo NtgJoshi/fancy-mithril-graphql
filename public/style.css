@@ -1,0 +1,8 @@
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-control-next:focus,
+.carousel-control-prev:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+    color: gray;
+}
