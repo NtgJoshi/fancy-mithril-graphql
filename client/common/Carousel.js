@@ -10,7 +10,8 @@ Carousel.view = vnode => {
                 m('div.row',
                     itemGroup.map(item =>
                         m('div.col-md-4',
-                            m('h4', item.label)
+                            m('h4', item.label),
+                            m('section', item.details),
                         )
                     )
                 )
@@ -19,7 +20,7 @@ Carousel.view = vnode => {
     );
 
     return m('div.card.card-raised.card-carousel.text-center',
-        m(`div.carousel.slide[id="carousel-${vnode.attrs.id}"][data-ride="carousel"][data-interval="3000"]`,
+        m(`div.carousel.slide[id="carousel-${vnode.attrs.id}"][data-ride="carousel"]`,
             [
                 m('div.carousel-inner',
                     carouselItems

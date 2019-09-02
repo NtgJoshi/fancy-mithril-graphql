@@ -4,11 +4,11 @@ const m = require('mithril');
 const resourceMaster = require('./resourceMaster');
 
 const resourceConfig = [
-  {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name'] },
-  {resourceName: 'PLANETS', resourcePath: 'all_planets', fields: ['name'] },
-  {resourceName: 'FILMS', resourcePath: 'all_films', fields: ['title'] },
-  {resourceName: 'SPECIES', resourcePath: 'all_species', fields: ['name'] },
-  {resourceName: 'VEHICLES', resourcePath: 'all_vehicles', fields: ['name'] },
+  {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name', 'gender', 'birth_year', 'eye_color', 'height'] },
+  {resourceName: 'PLANETS', resourcePath: 'all_planets', fields: ['name', 'population', 'diameter', 'climate'] },
+  {resourceName: 'FILMS', resourcePath: 'all_films', fields: ['title', 'release_date', 'director', 'producer'] },
+  {resourceName: 'SPECIES', resourcePath: 'all_species', fields: ['name', 'language', 'classification', 'designation'] },
+  {resourceName: 'VEHICLES', resourcePath: 'all_vehicles', fields: ['name', 'model', 'vehicle_class', 'cost_in_credits'] },
 ];
 
 function render() {

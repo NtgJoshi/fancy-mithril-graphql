@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run dev",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "fsbin emptyDir build && fsbin copy public build && webpack --config webpack.build.js",
     "clean": "fsbin emptyDir build",
