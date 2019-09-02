@@ -29,12 +29,11 @@ Films.view = () => {
 Films.oninit = () => {
     m.request({
         method: 'GET',
-        url: 'https://swapi.co/api/films/',
-    })
-        .then((data) => {
-            Films.state.films = data.results;
-            m.redraw();
-        });
+        url: 'http://localhost:4000?query={all_films {title}}',
+    }).then((result) => {
+        Films.state.films = result.data.all_films;
+        m.redraw();
+    });
 };
 
 module.exports = Films;
