@@ -1,12 +1,15 @@
 const m = require('mithril');
 
 // const model = require('./model');
+const ResourceDetail = require('./resourceDetail');
 
-const People = require('./People');
-const Planets = require('./Planets');
-const Films = require('./Films');
-const Vehicles = require('./Vehicles');
-const Species = require('./Species');
+const resourceConfig = [
+  {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name'] },
+  {resourceName: 'PLANETS', resourcePath: 'all_planets', fields: ['name'] },
+  {resourceName: 'FILMS', resourcePath: 'all_films', fields: ['title'] },
+  {resourceName: 'SPECIES', resourcePath: 'all_species', fields: ['name'] },
+  {resourceName: 'VEHICLES', resourcePath: 'all_vehicles', fields: ['name'] },
+];
 
 function render() {
     return [
@@ -53,23 +56,11 @@ function render() {
             )
         ),
         m('div.main.main-raised',
-            [
-                m('div.form-group',
-                    m(People),
-                ),
-                m('div.form-group',
-                    m(Films),
-                ),
-                m('div.form-group',
-                    m(Vehicles),
-                ),
-                m('div.form-group',
-                    m(Species),
-                ),
-                m('div.form-group',
-                    m(Planets),
-                )
-            ]
+          resourceConfig.map(entry =>
+            m('div.form-group',
+              m(ResourceDetail, entry),
+            )
+          )
         ),
         m('footer.footer[data-background-color="black"]',
             m('div.container',
