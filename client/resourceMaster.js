@@ -2,9 +2,9 @@ const m = require('mithril');
 const Loader = require('./common/Loader');
 const Carousel = require('./common/Carousel');
 
-const ResourceDetail = {};
+const ResourceMaster = {};
 
-ResourceDetail.view = (vnode) => {
+ResourceMaster.view = (vnode) => {
   return m('div', [
     m('h1', vnode.attrs.resourceName),
     m('div',
@@ -22,7 +22,7 @@ ResourceDetail.view = (vnode) => {
   ]);
 };
 
-ResourceDetail.oninit = (vnode) => {
+ResourceMaster.oninit = (vnode) => {
   vnode.state.data = [];
 
   m.request({
@@ -34,4 +34,4 @@ ResourceDetail.oninit = (vnode) => {
   });
 };
 
-module.exports = ResourceDetail;
+module.exports = ResourceMaster;

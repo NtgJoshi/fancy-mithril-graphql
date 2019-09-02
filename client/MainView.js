@@ -1,7 +1,7 @@
 const m = require('mithril');
 
 // const model = require('./model');
-const ResourceDetail = require('./resourceDetail');
+const resourceMaster = require('./resourceMaster');
 
 const resourceConfig = [
   {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name'] },
@@ -58,7 +58,7 @@ function render() {
         m('div.main.main-raised',
           resourceConfig.map(entry =>
             m('div.form-group',
-              m(ResourceDetail, entry),
+              m(resourceMaster, entry),
             )
           )
         ),
