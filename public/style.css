@@ -6,3 +6,11 @@
 .carousel-control-prev:hover {
     color: gray;
 }
+
+.disabled .toggle {
+    background-color: lightgray!important;
+}
+.disabled .toggle:after {
+    background-color: lightgray!important;
+    border-color: gray!important;
+}

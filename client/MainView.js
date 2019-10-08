@@ -4,11 +4,12 @@ const m = require('mithril');
 const resourceMaster = require('./resourceMaster');
 
 const resourceConfig = [
-  {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name', 'gender', 'birth_year', 'eye_color', 'height'] },
-  {resourceName: 'PLANETS', resourcePath: 'all_planets', fields: ['name', 'population', 'diameter', 'climate'] },
-  {resourceName: 'FILMS', resourcePath: 'all_films', fields: ['title', 'release_date', 'director', 'producer'] },
-  {resourceName: 'SPECIES', resourcePath: 'all_species', fields: ['name', 'language', 'classification', 'designation'] },
-  {resourceName: 'VEHICLES', resourcePath: 'all_vehicles', fields: ['name', 'model', 'vehicle_class', 'cost_in_credits'] },
+  {resourceName: 'PEOPLE', resourcePath: 'all_people', fields: ['name', 'gender', 'birth_year', 'eye_color', 'height'], searchField: 'name' },
+  {resourceName: 'PLANETS', resourcePath: 'all_planets', fields: ['name', 'population', 'diameter', 'climate'], searchField: 'name' },
+  {resourceName: 'FILMS', resourcePath: 'all_films', fields: ['title', 'release_date', 'director', 'producer'], searchField: 'title' },
+  {resourceName: 'SPECIES', resourcePath: 'all_species', fields: ['name', 'language', 'classification', 'designation'], searchField: 'name' },
+  {resourceName: 'VEHICLES', resourcePath: 'all_vehicles', fields: ['name', 'model', 'vehicle_class', 'cost_in_credits'], searchField: 'name' },
+  {resourceName: 'STARSHIPS', resourcePath: 'all_starships', fields: ['name', 'model'], searchField: 'name' },
 ];
 
 function render() {
@@ -57,7 +58,7 @@ function render() {
         ),
         m('div.main.main-raised',
           resourceConfig.map(entry =>
-            m('div.form-group',
+            m('div.mb-4',
               m(resourceMaster, entry),
             )
           )

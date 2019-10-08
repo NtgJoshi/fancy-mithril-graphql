@@ -4,7 +4,6 @@ const _ = require('lodash');
 const ResourceDetails = {};
 
 ResourceDetails.view = (vnode) => {
-    console.log(vnode.attrs.resource);
     const renderFields = [];
     _.forOwn(vnode.attrs.resource, (value, key) => {
 

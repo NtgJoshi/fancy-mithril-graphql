@@ -19,7 +19,7 @@ Carousel.view = vnode => {
         )
     );
 
-    return m('div.card.card-raised.card-carousel.text-center',
+    return m('div.card-carousel.text-center',
         m(`div.carousel.slide[id="carousel-${vnode.attrs.id}"][data-ride="carousel"]`,
             [
                 m('div.carousel-inner',
