@@ -3,7 +3,7 @@ require('dotenv').config({ path: path.resolve(process.cwd(), '.env.development')
 require('dotenv').config();
 const webpack = require('webpack');
 
-const port = 8020;
+const port = 8080;
 const openBrowser = true;
 const babel = true;
 

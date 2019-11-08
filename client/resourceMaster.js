@@ -101,7 +101,8 @@ ResourceMaster.view = (vnode) => {
                                                         if (key !== vnode.state.titleField) {
                                                             vnode.state.displayFields = vnode.state.displayFields.includes(key) ?
                                                                 vnode.state.displayFields.filter(item => item !== key) :
-                                                                [ ...vnode.state.displayFields, key ]
+                                                                [ ...vnode.state.displayFields, key ];
+                                                            updateData(vnode);
                                                         }
                                                     }
                                                 },
@@ -159,9 +160,15 @@ ResourceMaster.oninit = (vnode) => {
   vnode.state.settingsOpen = false;
   vnode.state.titleField = vnode.attrs.fields[0];
 
+  updateData(vnode);
+};
+
+const updateData = vnode => {
+  vnode.state.data = [];
+
   m.request({
     method: 'GET',
-    url: `http://localhost:4000?query={${vnode.attrs.resourcePath} {${vnode.state.fieldOrder.join(',')}}}`,
+    url: `http://localhost:4000?query={${vnode.attrs.resourcePath} {${vnode.state.displayFields.join(',')}}}`,
   }).then((result) => {
     vnode.state.data = result.data[vnode.attrs.resourcePath];
     m.redraw();
