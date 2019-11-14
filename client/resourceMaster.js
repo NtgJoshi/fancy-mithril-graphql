@@ -48,6 +48,9 @@ ResourceMaster.view = (vnode) => {
                                 onkeydown: event => {
                                     if (event.keyCode === 13) {
                                         console.log('test');
+
+                                        vnode.state.searchTerm = event.target.value;
+                                        updateData(vnode);
                                     }
                                 },
                             }
@@ -101,7 +104,8 @@ ResourceMaster.view = (vnode) => {
                                                         if (key !== vnode.state.titleField) {
                                                             vnode.state.displayFields = vnode.state.displayFields.includes(key) ?
                                                                 vnode.state.displayFields.filter(item => item !== key) :
-                                                                [ ...vnode.state.displayFields, key ]
+                                                                [ ...vnode.state.displayFields, key ];
+                                                            updateData(vnode);
                                                         }
                                                     }
                                                 },
@@ -158,10 +162,17 @@ ResourceMaster.oninit = (vnode) => {
   vnode.state.fieldOrder = vnode.attrs.fields;
   vnode.state.settingsOpen = false;
   vnode.state.titleField = vnode.attrs.fields[0];
+  vnode.state.searchTerm = '';
+
+  updateData(vnode);
+};
+
+const updateData = vnode => {
+  vnode.state.data = [];
 
   m.request({
     method: 'GET',
-    url: `http://localhost:4000?query={${vnode.attrs.resourcePath} {${vnode.state.fieldOrder.join(',')}}}`,
+    url: `http://localhost:4000?query={${vnode.attrs.resourcePath} ${vnode.state.searchTerm.length ? `(${vnode.attrs.searchField}: "${vnode.state.searchTerm}")` : ''} {${vnode.state.displayFields.join(',')}}}`,
   }).then((result) => {
     vnode.state.data = result.data[vnode.attrs.resourcePath];
     m.redraw();
