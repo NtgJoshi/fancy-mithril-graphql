@@ -1,6 +1,6 @@
 const m = require('mithril');
 const MainView = require('./MainView');
 
-require('space-loader')
+require('fancy-web-components')
 
 m.mount(document.body, { view: MainView });
