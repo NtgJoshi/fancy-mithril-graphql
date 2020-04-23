@@ -21,7 +21,8 @@
   },
   "homepage": "",
   "dependencies": {
-    "mithril": "^1.1.6"
+    "mithril": "^1.1.6",
+    "space-loader": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
