@@ -1,6 +1,5 @@
 const m = require('mithril');
 const _ = require('lodash');
-const Loader = require('./common/Loader');
 const Carousel = require('./common/Carousel');
 const Modal = require('./common/Modal');
 const resourceDetails = require('./resourceDetails');
@@ -33,6 +32,7 @@ ResourceMaster.view = (vnode) => {
                 },
                 vnode.attrs.resourceName
             ),
+          m('space-loader'),
             m('div.d-flex.justify-content-between.align-items-center', [
                 m('div.input-group',
                     [
@@ -70,7 +70,7 @@ ResourceMaster.view = (vnode) => {
     ),
     m('div',
       vnode.state.data.length === 0 ?
-        m(Loader):
+        m('space-loader'):
           m('section',
             [
                 m(Carousel, {
