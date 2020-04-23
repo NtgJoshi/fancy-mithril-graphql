@@ -32,7 +32,6 @@ ResourceMaster.view = (vnode) => {
                 },
                 vnode.attrs.resourceName
             ),
-          m('space-loader'),
             m('div.d-flex.justify-content-between.align-items-center', [
                 m('div.input-group',
                     [
@@ -174,6 +173,7 @@ const updateData = vnode => {
     method: 'GET',
     url: `http://localhost:4000?query={${vnode.attrs.resourcePath} ${vnode.state.searchTerm.length ? `(${vnode.attrs.searchField}: "${vnode.state.searchTerm}")` : ''} {${vnode.state.displayFields.join(',')}}}`,
   }).then((result) => {
+      console.log(result);
     vnode.state.data = result.data[vnode.attrs.resourcePath];
     m.redraw();
   });
